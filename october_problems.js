@@ -17,9 +17,29 @@ var sorted_arr = arrayID.sort(function(a, b){return a-b}); // So we first need t
 console.log(sorted_arr)
 var drone = []; // to figure out which drone amazon has stolen from us!
 
-for (var i = 0; i < arrayID.length - 1; i++) { 
+for (var i = 0; i < arrayID.length - 1; i++) {
     if (sorted_arr[i + 1] != sorted_arr[i]) {
         drone.push(sorted_arr[i]);
     }
 }
 console.log(drone)
+
+
+
+
+//I'm making a search engine called MillionGazillion™.
+//I wrote a crawler that visits web pages, stores a few keywords in a database, and follows links to other web pages.
+//I noticed that my crawler was wasting a lot of time visiting the same pages over and over, so I made a hash table
+//visited where I'm storing URLs I've already visited. Now the crawler only visits a URL if it hasn't already been visited.
+//Thing is, the crawler is running on my old desktop computer in my parents' basement (where I totally don't live anymore),
+//and it keeps running out of memory because visited is getting so huge.
+//How can I trim down the amount of space taken up by visited?
+
+I honestly did not know any kind of solution for this, other then maybe shortening the urls without http/www/.com..etc.. to
+take up less memory. So i went on to the hint.
+
+The first hint did basically what i said, it took off the www and stored it seperatley, like [www.][google.com]. So suprisingly
+my first guess was close to the hint.
+
+The actual solution suggested using a trie, which i had never heard of before. But is an interesting but semi-complicated
+way of saving that data.

@@ -43,3 +43,63 @@ my first guess was close to the hint.
 
 The actual solution suggested using a trie, which i had never heard of before. But is an interesting but semi-complicated
 way of saving that data.
+
+
+
+// You are a renowned thief who has recently switched from stealing precious metals to stealing cakes because of the
+// insane profit margins. You end up hitting the jackpot, breaking into the world's largest privately owned stock of
+// cakes—the vault of the Queen of England.While Queen Elizabeth has a limited number of types of cake, she has
+// an unlimited supply of each type.
+// Each type of cake has a weight and a value, stored in tuples ↴ with two indices:
+// An integer representing the weight of the cake in kilograms
+// An integer representing the monetary value of the cake in British pounds
+// For example:
+//
+//   # weighs 7 kilograms and has a value of 160 pounds
+// (7, 160)
+//
+// # weighs 3 kilograms and has a value of 90 pounds
+// (3, 90)
+//
+// You brought a duffel bag that can hold limited weight, and you want to make off with the most valuable haul possible.
+//
+// Write a function max_duffel_bag_value() that takes an array of cake type tuples and a weight capacity, and
+// returns the maximum monetary value the duffel bag can hold.
+// For example:
+//
+//   cake_tuples = [(7, 160), (3, 90), (2, 15)]
+// capacity    = 20
+//
+// max_duffel_bag_value(cake_tuples, capacity)
+// # returns 555 (6 of the middle type of cake and 1 of the last type of cake)
+//
+// Weights and values may be any non-negative integer. Yes, it's weird to think about cakes that weigh nothing or
+// duffel bags that can't hold anything. But we're not just super mastermind criminals—we're also meticulous about
+// keeping our algorithms flexible and comprehensive.
+
+So this ones kind of tricky, because i at first thought that why dont we have one of the first cake? but then i realized
+the second cake is worth more, even at 6 kilograms it would be worth 180.So similar to how when we go grocery shopping
+we want to find the best price per pound we need to do that here first as well.
+
+function max_duffel_bag_value(cake_tuples,capacity) {
+  var max_values_at_capacities = [0] * (weight_capacity + 1)
+
+ for(current_capacity in xrange(weight_capacity + 1)){
+     var current_max_value = 0
+
+     for(cake_weight, cake_value in cake_tuples){
+         if (cake_weight == 0 and cake_value != 0){
+             return INFINITY
+           }
+         if (cake_weight <= current_capacity){
+
+             max_value_using_cake = cake_value + max_values_at_capacities[current_capacity - cake_weight]
+
+             current_max_value = max(max_value_using_cake, current_max_value)
+            }
+            }
+           }
+     max_values_at_capacities[current_capacity] = current_max_value
+
+ return max_values_at_capacities[weight_capacity]
+}

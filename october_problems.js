@@ -93,13 +93,24 @@ function max_duffel_bag_value(cake_tuples,capacity) {
            }
          if (cake_weight <= current_capacity){
 
-             max_value_using_cake = cake_value + max_values_at_capacities[current_capacity - cake_weight]
+             var max_value_using_cake = cake_value + max_values_at_capacities[current_capacity - cake_weight]
 
-             current_max_value = max(max_value_using_cake, current_max_value)
+             var current_max_value = max(max_value_using_cake, current_max_value)
             }
             }
            }
-     max_values_at_capacities[current_capacity] = current_max_value
+     var max_values_at_capacities[current_capacity] = current_max_value
 
  return max_values_at_capacities[weight_capacity]
 }
+
+
+//Write a function to see if a binary tree ↴ is "superbalanced" (a new tree property we just made up).
+//A tree is "superbalanced" if the difference between the depths of any two leaf nodes is no greater than one.
+
+// I have to admit i had heard of binary trees, but did not fully understand the concept, but it kind of reminds
+// me of my angular file routes. And although i understant what they are saying for superbalanced i had zero clue how to
+// approach the problem.
+
+// The actual solution had you going from the bottom up looking for diffrences,
+// in the node and when you find more then two to return a false.
